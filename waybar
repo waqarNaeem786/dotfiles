@@ -1,0 +1,47 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": [],
+    "modules-right": ["pulseaudio", "network", "battery", "cpu", "memory", "disk", "clock"],
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "🔇 Muted",
+        "format-icons": {
+            "default": ["🔈", "🔉", "🔊"]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%)",
+        "format-disconnected": "Disconnected"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ⚡️",
+        "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"]
+    },
+    "cpu": {
+        "format": "{usage}% 💻"
+    },
+    "memory": {
+        "format": "{}% 🧠"
+    },
+    "disk": {
+        "format": "{used}/{total} 💽",
+        "path": "/"
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d %I:%M %p}"
+    }
+}
